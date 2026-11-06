@@ -1,0 +1,218 @@
+:root{--red:#ff1a2e;--red2:#8b0010;--green:#3ddc5a;--bg:#050003;--txt:#f3e9ea;--glass:rgba(22,6,10,.82)}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html,body{height:100%;background:var(--bg);color:var(--txt);font-family:Roboto,system-ui,Arial,sans-serif;overflow-x:hidden}
+
+#rain{position:fixed;inset:0;z-index:0;opacity:.55}
+
+
+
+/* ===== LIGNES DE SCAN (vieux terminal) ===== */
+
+body::after{content:"";position:fixed;inset:0;z-index:60;pointer-events:none;
+
+ background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px)}
+
+.scan{position:fixed;left:0;right:0;top:-120px;height:120px;z-index:61;pointer-events:none;
+
+ background:linear-gradient(180deg,transparent,rgba(255,26,46,.13),transparent);animation:scan 6s linear infinite}
+
+
+
+/* ===== FLASH VERT / ROUGE ===== */
+
+#flash{position:fixed;inset:0;z-index:55;pointer-events:none;opacity:0}
+
+#flash.g{background:radial-gradient(circle,transparent 45%,rgba(61,220,90,.28));animation:fl .5s}
+
+#flash.r{background:radial-gradient(circle,transparent 45%,rgba(255,26,46,.32));animation:fl .5s}
+
+
+
+/* ===== ÉCRAN D'ENTRÉE ===== */
+
+#intro{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;
+
+ background:linear-gradient(rgba(5,0,3,.55),rgba(5,0,3,.8)),url("../images/valhalla.jpg") center/cover no-repeat,#0a0004;transition:opacity .8s,visibility .8s}
+
+#intro.hide{opacity:0;visibility:hidden}
+
+#intro h1{font-size:clamp(26px,8vw,56px);letter-spacing:4px;text-shadow:0 0 18px var(--red),0 0 40px var(--red2);animation:flick 4s infinite}
+
+#intro h2{margin-top:14px;min-height:1.4em;font-size:clamp(13px,3.6vw,22px);letter-spacing:3px;color:#ff6b78;text-shadow:0 0 12px var(--red);font-weight:500}
+
+#enter{margin-top:48px;padding:16px 28px;font-size:17px;letter-spacing:4px;font-weight:700;color:#fff;cursor:pointer;
+
+ background:linear-gradient(135deg,#b3001b,#4a0008);border:1px solid var(--red);border-radius:14px;animation:pulse 1.8s infinite;transition:transform .2s}
+
+#enter:hover,#enter:active{transform:scale(1.08)}
+
+
+
+/* ===== GLITCH ROUGE / BLEU SUR LES TITRES ===== */
+
+.glitch{position:relative}
+
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;inset:0;overflow:hidden;pointer-events:none}
+
+.glitch::before{left:2px;color:#ff1a2e;text-shadow:-2px 0 #00e5ff;animation:gl1 3s infinite linear alternate-reverse}
+
+.glitch::after{left:-2px;color:#00b3ff;text-shadow:2px 0 #ff1a2e;animation:gl2 2.5s infinite linear alternate-reverse}
+
+
+
+/* ===== MACHINE À ÉCRIRE ===== */
+
+.typing::after{content:"▌";margin-left:3px;animation:blink .7s steps(1) infinite}
+
+
+
+/* ===== SITE ===== */
+
+#app{position:relative;z-index:2;max-width:560px;margin:0 auto;padding:26px 16px 40px}
+
+.logo{text-align:center;margin-bottom:22px}
+
+.logo small{display:block;min-height:1.4em;letter-spacing:7px;color:#ff7783;text-shadow:0 0 10px var(--red);font-size:15px}
+
+.logo b{display:inline-block;font-size:54px;letter-spacing:6px;line-height:1.1;text-shadow:0 0 22px var(--red),0 0 50px var(--red2)}
+
+.panel{position:relative;padding:14px;margin-bottom:14px;background:var(--glass);border:1px solid #7a1020;border-radius:18px;box-shadow:0 0 18px rgba(255,26,46,.2)}
+
+.ptitle{display:flex;justify-content:space-between;color:#c9a9ad;font-size:15px;margin-bottom:10px}
+
+#count{color:var(--red);font-weight:700}
+
+#list{width:100%;min-height:130px;padding:14px;font:16px/1.6 monospace;color:#fff;background:rgba(0,0,0,.35);border:1px solid #5a0d18;border-radius:12px;outline:none;resize:vertical;transition:.25s}
+
+#list:focus{border-color:var(--red);box-shadow:0 0 18px rgba(255,26,46,.55)}
+
+.opts{display:flex;gap:10px;margin-bottom:14px}
+
+.opts label{flex:1;font-size:12px;color:#c9a9ad;display:flex;flex-direction:column;gap:6px}
+
+.opts select,.opts input{padding:12px;font-size:15px;color:#fff;background:var(--glass);border:1px solid #5a0d18;border-radius:12px;outline:none;width:100%}
+
+.opts select:focus,.opts input:focus{border-color:var(--red)}
+
+.btns{display:flex;gap:10px}
+
+.btns button{flex:1;padding:16px;font-size:16px;font-weight:700;letter-spacing:3px;color:#fff;cursor:pointer;border:1px solid var(--red);border-radius:14px;
+
+ background:linear-gradient(135deg,#d0112b,#5a000d);animation:pulse 2s infinite;transition:transform .2s,opacity .2s}
+
+.btns button:hover{transform:scale(1.03)}
+
+.btns button.ghost{background:var(--glass);animation:none;letter-spacing:1px}
+
+.btns button.ghost:hover{box-shadow:0 0 14px rgba(255,26,46,.6)}
+
+.btns button:disabled{opacity:.35;cursor:not-allowed;animation:none;transform:none}
+
+.btns.small{margin-bottom:12px}
+
+.btns.small button{padding:11px;font-size:12px}
+
+.bar{height:5px;margin-top:14px;background:#240509;border-radius:5px;overflow:hidden}
+
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red2),var(--red));box-shadow:0 0 12px var(--red);transition:width .2s}
+
+#msg{text-align:center;margin:10px 0;font-size:14px;color:#ff8f99;min-height:20px}
+
+
+
+.stats{display:flex;gap:10px;margin-bottom:14px}
+
+.stat{position:relative;flex:1;text-align:center;padding:14px 6px;background:var(--glass);border:1px solid #7a1020;border-radius:18px;transition:.3s}
+
+.stat em{display:block;font-style:normal;font-size:13px;color:#d9c4c7;margin-bottom:6px}
+
+.stat b{display:block;font-size:42px;line-height:1.1}
+
+.stat small{font-size:13px}
+
+.stat.bump{animation:bump .3s}
+
+.g{color:var(--green)}.r{color:#ff3b4d}
+
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+
+.dot.g{background:var(--green);box-shadow:0 0 8px var(--green)}
+
+.dot.r{background:#ff3b4d;box-shadow:0 0 8px #ff3b4d}
+
+.speed em{font-style:normal;font-size:14px;color:#d9c4c7;display:block;margin-bottom:6px}
+
+.speed b{font-size:28px}
+
+
+
+/* ===== BORDURES NÉON QUI TOURNENT ===== */
+
+@property --ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+
+.panel::before,.stat::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:2px;pointer-events:none;
+
+ background:conic-gradient(from var(--ang),transparent 0 70%,var(--red) 90%,#ffb3ba 100%);
+
+ -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+
+ -webkit-mask-composite:xor;mask-composite:exclude;animation:spin 4s linear infinite}
+
+
+
+.sec{display:flex;align-items:center;gap:12px;margin:24px 0 12px;color:#ffb3ba;font-size:18px}
+
+.sec::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--red),transparent)}
+
+.table{background:var(--glass);border:1px solid #7a1020;border-radius:18px;overflow:hidden;max-height:420px;overflow-y:auto}
+
+.tr{display:grid;grid-template-columns:2.2fr 1.2fr 1fr .6fr;gap:6px;padding:14px;font-size:14px;border-bottom:1px solid #2c0a10;align-items:center;animation:rise .3s}
+
+.tr.th{position:sticky;top:0;background:#1a0509;color:#ffb3ba;font-size:13px;z-index:1}
+
+.tr.ok{animation:rise .3s,rowg 1s}
+
+.tr.ko{animation:rise .3s,rowr 1s}
+
+.tr.ok span:nth-child(2){color:var(--green)}
+
+.tr.ko span:nth-child(2){color:#ff3b4d}
+
+.tr span:first-child{word-break:break-all}
+
+
+
+.foot{text-align:center;margin-top:30px;font-size:11px;letter-spacing:2px;color:#a3303d}
+
+
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes pulse{0%,100%{box-shadow:0 0 10px rgba(255,26,46,.4)}50%{box-shadow:0 0 28px rgba(255,26,46,.95)}}
+
+@keyframes flick{0%,92%,100%{opacity:1}94%{opacity:.5}96%{opacity:1}98%{opacity:.6}}
+
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+@keyframes bump{50%{transform:scale(1.07);box-shadow:0 0 22px rgba(255,26,46,.8)}}
+
+@keyframes scan{to{top:100%}}
+
+@keyframes spin{to{--ang:360deg}}
+
+@keyframes blink{50%{opacity:0}}
+
+@keyframes fl{from{opacity:1}to{opacity:0}}
+
+@keyframes rowg{0%{background:rgba(61,220,90,.35)}100%{background:transparent}}
+
+@keyframes rowr{0%{background:rgba(255,26,46,.35)}100%{background:transparent}}
+
+@keyframes gl1{0%,86%{clip-path:inset(0 0 100% 0)}88%{clip-path:inset(15% 0 65% 0)}92%{clip-path:inset(65% 0 10% 0)}96%{clip-path:inset(40% 0 40% 0)}100%{clip-path:inset(0 0 100% 0)}}
+
+@keyframes gl2{0%,84%{clip-path:inset(100% 0 0 0)}87%{clip-path:inset(70% 0 5% 0)}91%{clip-path:inset(10% 0 75% 0)}95%{clip-path:inset(50% 0 30% 0)}100%{clip-path:inset(100% 0 0 0)}}
+
+
+

@@ -1,0 +1,24 @@
+{
+
+  "name": "zodyl-proxy",
+
+  "version": "1.0.0",
+
+  "main": "server.js",
+
+  "scripts": {
+
+    "start": "node server.js"
+
+  },
+
+  "dependencies": {
+
+    "https-proxy-agent": "^7.0.6",
+
+    "socks-proxy-agent": "^8.0.5"
+
+  }
+
+}
+

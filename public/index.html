@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>SYSTÈME ZODYL PROXY</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<canvas id="rain"></canvas>
+
+<div id="flash"></div>
+
+<div class="scan"></div>
+
+
+
+<section id="intro">
+
+  <h1 class="glitch" data-text="BAJI D JAP">BAJI D JAP</h1>
+
+  <h2 id="introSub">L’ANGE SANS TÊTE… LE PÊCHER DE L’AVARICE</h2>
+
+  <button id="enter">SYSTÈME ZODYL PROXY</button>
+
+</section>
+
+
+
+<main id="app">
+
+  <div class="logo">
+
+    <small id="logoSub">SYSTÈME ZODYL</small>
+
+    <b class="glitch" data-text="PROXY">PROXY</b>
+
+  </div>
+
+
+
+  <div class="panel">
+
+    <div class="ptitle"><span>Proxies à tester</span><span id="count">0</span></div>
+
+    <textarea id="list" spellcheck="false" placeholder="192.168.1.1:8080, 45.155.204.1:3128, socks5://10.0.0.55:1080"></textarea>
+
+  </div>
+
+
+
+  <div class="opts">
+
+    <label>Protocole
+
+      <select id="proto">
+
+        <option value="http">HTTP</option>
+
+        <option value="socks5">SOCKS5</option>
+
+        <option value="socks4">SOCKS4</option>
+
+      </select>
+
+    </label>
+
+    <label>Simultanés<input id="conc" type="number" min="1" max="200" value="50"></label>
+
+    <label>Timeout (s)<input id="timeout" type="number" min="1" max="30" value="8"></label>
+
+  </div>
+
+
+
+  <div class="btns">
+
+    <button id="go">TESTER ➤</button>
+
+    <button id="stop" class="ghost" disabled>STOP ■</button>
+
+  </div>
+
+  <div class="bar"><i id="barfill"></i></div>
+
+  <div id="msg"></div>
+
+
+
+  <div class="stats">
+
+    <div class="stat"><em>Total</em><b id="sTotal">0</b></div>
+
+    <div class="stat"><em><i class="dot g"></i>Vivants</em><b id="sAlive" class="g">0</b><small class="g">en vert</small></div>
+
+    <div class="stat"><em><i class="dot r"></i>Morts</em><b id="sDead" class="r">0</b><small class="r">en rouge</small></div>
+
+  </div>
+
+
+
+  <div class="panel speed"><em>Vitesse moyenne</em><b id="sSpeed">--</b></div>
+
+
+
+  <div class="sec">Résultats</div>
+
+  <div class="btns small">
+
+    <button id="copy" class="ghost">COPIER LES VIVANTS</button>
+
+    <button id="clear" class="ghost">VIDER</button>
+
+  </div>
+
+  <div class="table">
+
+    <div class="tr th"><span>Proxy</span><span>Statut</span><span>Ping</span><span>Pays</span></div>
+
+    <div id="rows"></div>
+
+  </div>
+
+
+
+  <div class="foot">CREATED BY BAJI D JAP L’ANGE SANS TÊTE</div>
+
+</main>
+
+
+
+<script src="js/rain.js"></script>
+
+<script src="js/app.js"></script>
+
+</body>
+
+</html>
+
+
+
